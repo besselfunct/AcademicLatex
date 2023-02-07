@@ -1,0 +1,26 @@
+% For copyright and license information, see uiucthesis2021.dtx and derivatives.
+\usepackage{titlesec}
+
+% italics, no bold for (sub*)sections
+\titleformat{\section}{\normalfont\Large\itshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\itshape}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize}{\thesubsubsection}{1em}{}
+
+% add rule before and after (centered) chapter title, number above
+\titleformat{\chapter}[display]  
+{\normalfont\singlespacing\scshape\Huge\filcenter} 
+{\huge{\chaptertitlename} \thechapter} 
+{1ex} 
+{\titlerule\vspace{1ex}} 
+[\vspace{1ex}\titlerule] 
+
+\newlength{\numberedheight}
+\setlength{\numberedheight}{50pt}
+
+\newlength{\numberlessheight}
+\setlength{\numberlessheight}{\numberedheight}
+\addtolength{\numberlessheight}{49.7pt}
+
+% manually set spacing of numberless titles to align heading with numbered titles
+\titlespacing*{\chapter}{0pt}{\numberedheight}{40pt}
+\titlespacing*{name=\chapter,numberless}{0pt}{\numberlessheight}{40pt}

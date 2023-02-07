@@ -1,0 +1,137 @@
+% For copyright and license information, see uiucthesis2021.dtx and derivatives.
+\documentclass{uiucthesis2021}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[bookmarksdepth=3,linktoc=all,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage[style=ieee]{biblatex}
+
+% \usepackage{ruledchapters}  % example of compliant heading format, uncomment to use
+
+\usepackage{lipsum}  % just for placeholder code
+
+% uncomment the below to show a grid on all pages
+% \usepackage[grid, gridunit=in, gridcolor=blue!40, subgridcolor=blue!20]{eso-pic}
+
+\addbibresource{./references.bib}
+
+\newcounter{counterforappendices}
+
+\begin{document}
+
+\title{Coffee Consumption of Graduate Students \\
+       Trying to Finish Dissertations}
+\author{Juan Valdez}
+\department{Food Science}
+\concentration{Coffee Studies}
+\phdthesis
+\degreeyear{2021}
+\committee{
+    Professor Prof Uno, Chair\\
+    Professor Prof Dos, Director of Research\\
+    Assistant Professor Prof Tres\\
+    Adjunct Professor Prof Quatro}
+\maketitle
+
+\frontmatter
+
+\begin{abstract}
+This is a comprehensive study of caffeine consumption by graduate
+students at the University of Illinois who are in the very final
+stages of completing their doctoral degrees. A study group of six
+hundred doctoral students\ldots.
+\end{abstract}
+
+\begin{dedication}
+To Father and Mother.
+\end{dedication}
+
+\begin{acknowledgments}
+This project would not have been possible without the support of
+many people. Many thanks to my adviser, Lawrence T. Strongarm, who
+read my numerous revisions and helped make some sense of the
+confusion. Also thanks to my committee members, Reginald Bottoms,
+Karin Vegas, and Cindy Willy, who offered guidance and support.
+Thanks to the University of Illinois Graduate College for awarding
+me a Dissertation Completion Fellowship, providing me with the
+financial means to complete this project. And finally, thanks to
+my husband, parents, and numerous friends who endured this long
+process with me, always offering support and love.
+\end{acknowledgments}
+
+{
+    \hypersetup{linkcolor=black}  % disable link coloring locally
+    \tableofcontents
+    % the Graduate College doesn't recommend including lot or lof
+    % \listoftables
+    % \listoffigures
+}
+
+\chapter{List of Abbreviations}
+
+\begin{abbrevlist}
+\item[CA] Caffeine Addict.
+\item[CD] Coffee Drinker.
+\end{abbrevlist}
+
+\chapter{List of Symbols}
+
+\begin{symbollist}[0.7in]
+\item[$\tau$] Time taken to drink one cup of coffee.
+\item[$\mu$g] Micrograms (of caffeine, generally).
+\end{symbollist}
+
+\mainmatter
+
+\chapter{The first chapter}
+
+\section{A section}
+
+\lipsum[1-5]
+
+How does this relate to coffee? We direct the reader to Refs.~\cite{Trembly98,Childish07,Presso10}.
+
+Equations are numbered within chapters:
+\begin{align}
+    a
+    &= b + c \\
+    d
+    &= \frac{e}{f}.
+\end{align}
+
+% input individual chapters files
+% \input{1-introduction}
+% \input{2-related}
+% \input{3-model}
+% \input{4-predictions}
+
+\chapter{Conclusions}
+
+We conclude that graduate students like coffee.
+
+% per Graduate College preference, place the \appendix and the appendices content before the
+% bibliography (here) only if the appendices contain references.
+
+\backmatter
+
+\printbibliography[heading=bibintoc,title={References}]
+
+% the below lines are only needed if bibliography precedes appendices
+% uses https://tex.stackexchange.com/a/440212 to continue page numbering
+\clearpage
+\setcounter{counterforappendices}{\value{page}}
+\mainmatter
+\setcounter{page}{\value{counterforappendices}}
+
+\appendix
+
+\chapter{An appendix}
+
+\lipsum[1-5]
+
+% \input{Appendix.tex}
+
+\end{document}

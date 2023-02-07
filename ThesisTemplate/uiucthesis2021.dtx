@@ -1,0 +1,638 @@
+% \iffalse meta-comment
+%
+% Copyright 2021 Zachary J. Weiner
+% Version 3.x was derived (with substantial revision) from a prior version by
+% Stephen Mayhew available at https://github.com/mayhewsw/uiucthesis2014,
+% which indicates prior authorship by Charles Kiyanda, Tim Head, Peter Czoschke,
+% and David Hull.
+% No copyright statement or license was included in versions prior to 3.1.
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status “maintained”.
+%
+% The Current Maintainer of this work is Zachary J. Weiner.
+%
+% This work consists of the files uiucthesis2021.dtx and the derived files
+% uiucthesis2021.{sty,ins,cls,pd}, and example files thesis.tex,
+% ruledchapters.sty, and references.bib.
+
+% !TEX program  = pdfLaTeX
+%<*internal>
+\iffalse
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+
+Copyright 2021 Zachary J. Weiner
+Version 3.x was derived (with substantial revision) from a prior version by
+Stephen Mayhew available at https://github.com/mayhewsw/uiucthesis2014,
+which indicates prior authorship by Charles Kiyanda, Tim Head, Peter Czoschke,
+and David Hull.
+No copyright statement or license was included in versions prior to 3.1.
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status “maintained”.
+
+The Current Maintainer of this work is Zachary J. Weiner.
+
+This work consists of the files uiucthesis2021.dtx and the derived files
+uiucthesis2021.{sty,ins,cls,pd}, and example files thesis.tex,
+ruledchapters.sty, and references.bib.
+
+\endpreamble
+
+\usedir{tex/latex/demopkg}
+\generate{
+  \file{\jobname.sty}{\from{\jobname.dtx}{package}}
+  \file{\jobname.cls}{\from{\jobname.dtx}{class}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/demopkg}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+
+%<*class|package>
+\def\fileversion{v3.1}
+\def\filedate{2021/09/01}
+\NeedsTeXFormat{LaTeX2e}
+%</class|package>
+% \def\fileversion{v3.1}
+% \def\filedate{2021/09/01}
+
+%<class>\ProvidesClass{uiucthesis2021}[\filedate\space\fileversion\space UIUC Thesis]
+%<package>\ProvidesPackage{uiucthesis2021}[\filedate\space\fileversion\space UIUC Thesis]
+
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[numbered]{hypdoc}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+%\title{^^A
+%  The \textsf{uiucthesis2021} class\thanks{^^A
+%    This file describes version \fileversion, last revised \filedate.^^A
+%  }^^A
+%}
+%\author{^^A
+%  Zachary J. Weiner\thanks{
+%        This version was adapted from Stephen Mayhew's edit of the version by Charles Kiyanda
+%        which itself was adapted from version 2.25, 2005/03/25 by Peter Czoschke
+%        and updated in 2007 by Tim Head.
+%        It was significantly simplified for the (apparently less restrictive) 2021 requirements and
+%        a number of no-longer-relevant options were removed.
+%        As many stylistic features/options (i.e., those not specified by the requirements)
+%        were removed as possible, the idea being these are more easily controlled by user-created
+%        style files.
+%    }
+%}^^A\thanks{E-mail: you@your.domain}^^A
+%\date{Released \filedate}
+%
+%\maketitle
+%
+%^^A \changes{v1.0}{2009/10/06}{First public release}
+%
+% \CheckSum{0}
+%
+% \MakeShortVerb{\|}
+%
+% \def\pkg#1{\textsf{#1}}
+% \def\env#1{\textsf{#1}}
+%
+% \begin{abstract}
+% A \LaTeX2e documentclass to produce a document intended to conform
+% to the format described in the UIUC Graduate College thesis requirements.
+% \end{abstract}
+%
+%
+% \section{Using the class}
+%
+% Load the \pkg{uiucthesis2021} class at the beginning of
+% your \LaTeX\ document with the |\documentclass| command.
+% The included template \pkg{thesis.tex} file illustrates usage
+% (including proper ordering of elements, etc.).
+%
+% \subsection{The Title Page}
+%
+% The |\maketitle| command is redefined so that it creates a
+% title page with the correct format for a thesis at UIUC.
+%
+% \DescribeMacro{\phdthesis}
+% \DescribeMacro{\msthesis}
+% Use the |\phdthesis| or |\msthesis| to set the correct thesis type.
+% The default thesis type is |\phdthesis|.
+%
+% \DescribeMacro{\department}
+% Set your department in which your degree will be with\linebreak
+% |\department{|\meta{department}|}|, leaving out ``Department of.''
+%
+% \DescribeMacro{\college}
+% Define your college with |\college{|\meta{college}|}|.
+% The default is college is ``Graduate College'';
+% you shouldn't need to change it.
+%
+% \DescribeMacro{\concentration}
+% \DescribeMacro{\minor}
+% Use to specify the name of your concentration or minor
+% (the appropriate lines will only appear if defined).
+%
+% \DescribeMacro{\degreeyear}
+% Use |\degreeyear{|\meta{year}|}| to define the year in which
+% you will receive your degree. The default is the current year.
+%
+% \DescribeMacro{\committee}
+% Use |\committee{|\meta{committee members}|}| to specify the members
+% of your committee and their titles as you want them to appear on the
+% title page. Separate members with |\\|. To respect the graduate college guidelines,
+% you must use the full title of each committee members. The committee chair should
+% appear first with the designation ``, Chair''. Your thesis adviser should appear second
+% with the title ``, Director of Research''. See the graduate college website for details.
+%
+% \subsection{Front Matter}
+%
+% \DescribeMacro{\frontmatter}
+% Typically, a thesis might have an abstract, a dedication, and
+% acknowledgments before the table of contents.
+% Use the |\frontmatter| command to start this preliminary section
+% of the thesis, which sets the page number of the next page
+% to roman numeral ii.
+%
+% \DescribeEnv{abstract}
+% The abstract should appear in the \env{abstract} environment.
+% This just produces another chapter with |\chapter*{\abstractname}|,
+% where |\abstractname| is ``Abstract'' (see User Customization below).
+%
+% \DescribeEnv{dedication}
+% A dedication page can be printed with the \env{dedication} environment.
+% This produces a separate page with the dedication centered horizontally
+% and vertically, with the text in italics.
+%
+% \DescribeEnv{acknowledgments}
+% Analagous to \env{abstract}.
+%
+% After this front matter comes the Table of Contents,
+% List of Tables, List of Figures, etc.  Use the standard \LaTeX\
+% commands |\tableofcontents|, |\listoftables|, |\listoffigures|, etc.,
+% to generate them.
+% In the \pkg{uiucthesis2021} format these lists are all single spaced.
+%
+% \DescribeEnv{symbollist}
+% \DescribeEnv{abbrevlist}
+% Optionally, these tables can be followed by a List of Abbreviations and/or
+% List of Symbols. Introduce these with the |\chapter| command. To aid in
+% making these lists, the \env{symbollist} and \env{abbrevlist}
+% produce a two-column list as illustrated below. By default the left column
+% is 1 inch wide but can be specified with an optional argument.
+%
+% \subsection{Main Matter}
+%
+% \DescribeMacro{\mainmatter}
+% Begin the main body of your thesis with the |\mainmatter| command, which
+% resets the page number to arabic numeral 1.
+% You can now use any of the commands defined by the
+% the book document class to write your thesis.
+%
+% \subsection{Reference Matter}
+%
+% \DescribeMacro{\appendix}
+% To switch from the body of your thesis to the reference material
+% at the end, use the standard \LaTeX\ |\appendix| command.
+%
+% \subsection{Back Matter}
+%
+% \DescribeMacro{\backmatter}
+% The last few chapters in your thesis should not have chapter
+% numbers, but should be listed in the Table of Contents.
+% These chapters include the Bibliography and the Index.  \LaTeX's
+% |\backmatter| command accomplishes this.
+%
+%
+% \section{User Customization}
+%
+% The \pkg{uiucthesis2021} class loads \pkg{setspace} for the
+% line spacing commands and enables |\onehalfspacing| (the minimum required).
+% This default may be overridden within the document body.
+%
+% The table of contents depth is set to include only chapters (the Graduate
+% College's stated preference).
+% Override by calling |\setcounter{tocdepth}{\meta{depth}}| again with depth
+% argument 1, 2, etc., to include sections, subsections, etc.
+%
+% No special format is implemented for chapter headings by default.
+%
+%
+% \DescribeMacro{\nocopyrightpage}
+% Put the |\nocopyrightpage| macro in the preamble to disable the default
+% copyright notice page.
+%
+%\StopEventually{^^A
+%  \PrintChanges
+%^^A   \PrintIndex
+%}
+%
+%    \begin{macrocode}
+%<*class|package>
+%    \end{macrocode}
+%
+% \section{Implementation}
+%
+% This section shows the implementation of the \pkg{uiucthesis2021} class.
+% Unless you are interested in the details of how \pkg{uiucthesis2021} works,
+% you probably don't need to read it.
+%
+%
+% First instruct \pkg{setspace} to use |\onehalfspacing| by default.
+% Load the \pkg{book} class with the |[oneside]| and |[letterpaper]| options.
+%    \begin{macrocode}
+%<*class>
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\PassOptionsToClass{letterpaper,oneside}{book}
+\ProcessOptions
+\LoadClass{book}
+%</class>
+\usepackage[onehalfspacing]{setspace}
+%    \end{macrocode}
+%
+% \subsection{Title Page}
+%
+% \begin{macro}{\title}
+% \begin{macro}{\author}
+% Override the standard definitions of |\title| and |\author| to also
+% define uppercased versions.
+%    \begin{macrocode}
+\def\@mkuptitle#1{\gdef\@Utitle{#1}}
+\def\title#1{\gdef\@title{#1}\MakeUppercase{\protect\@mkuptitle{#1}}}
+\def\@mkupauthor#1{\gdef\@Uauthor{#1}}
+\def\author#1{\gdef\@author{#1}\MakeUppercase{\protect\@mkupauthor{#1}}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\phdthesis}
+% \begin{macro}{\msthesis}
+% \begin{macro}{\department}
+% \begin{macro}{\college}
+% \begin{macro}{\degreeyear}
+% \begin{macro}{\committee}
+% Macros to set title page elements.
+%    \begin{macrocode}
+\def\phdthesis{\def\@degree{Doctor of Philosophy}
+    \def\degree{Ph.D.}
+    \def\@thesisname{DISSERTATION}
+    \def\@committeename{Doctoral Committee:}
+    }
+\def\msthesis{\def\@degree{Master of Science}
+    \def\degree{M.S.}
+    \def\@thesisname{THESIS}
+    \def\@committeename{Master's Committee:}
+    }
+\def\department#1{\def\@dept{#1}}
+\def\concentration#1{\def\@concentration{#1}}
+\def\minor#1{\def\@minor{#1}}
+\def\college#1{\def\@college{#1}}
+\def\degreeyear#1{\def\@degreeyear{#1}}
+\newcommand{\committee}[1]{\gdef\@committee{#1}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\copyrightnotice}
+% Define the copyright notice as a macro so that the user
+% can change it if desired.
+%    \begin{macrocode}
+\def\copyrightnotice{\copyright~\@degreeyear~ \@author}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nocopyrightpage}
+% The printing of the copyright page can also be turned off with the
+% |\nocopyrightpage| command (must come before |\maketitle|):
+%    \begin{macrocode}
+\newif\if@thesiscrpage \@thesiscrpagetrue
+\let\nocopyrightpage\@thesiscrpagefalse
+%    \end{macrocode}
+% \end{macro}
+%
+% Set the default title page elements.
+%    \begin{macrocode}
+\phdthesis
+\college{Graduate College}
+\def\@degreeyear{\number\year}
+%    \end{macrocode}
+%
+% \begin{macro}{\maketitle}
+% Redefine \pkg{book}'s |\maketitle| command to produce
+% the titlepage in the correct format.
+%
+%    \begin{macrocode}
+\renewcommand\maketitle{
+%    \end{macrocode}
+% Print the copyright page if we're supposed to.
+%    \begin{macrocode}
+    \if@thesiscrpage
+        \newpage
+        \thispagestyle{empty}
+        \null\vfill
+        \centerline{\copyrightnotice}%
+        \vskip 3ex % skip to visually center copyright notice
+        \vfill
+    \fi
+%    \end{macrocode}
+% Now start a new page for the title page.  It is single-spaced.
+%    \begin{macrocode}
+    \newpage
+    \thispagestyle{empty}%
+    \enlargethispage{1in}%
+    \begingroup
+    \def\baselinestretch{1}
+%    \end{macrocode}
+% Check what size font we are using for the text and select a
+% smaller size appropriately.
+%    \begin{macrocode}
+    \ifnum \@ptsize=2
+        \@normalsize
+        \newcommand{\thesis@small}{\small}
+    \else
+        \large
+        \newcommand{\thesis@small}{\@normalsize}
+    \fi
+%    \end{macrocode}
+% We have to be careful to get the vertical position right.  The
+% easiest way to do this seems to be to just set |\topmargin|,
+% |\headheight|, and |\headsep| for this page.
+%    \begin{macrocode}
+    \headheight=0pt \headsep=0pt
+    \topmargin=0in
+%    \end{macrocode}
+% Adjust the horizontal spacing so that the title page
+% is centered on the page even if the rest of the document isn't.
+% I'm not sure when |\textwidth| changes take place, so instead
+% we calculate the correct |\oddsidemargin| to center the text column.
+%    \begin{macrocode}
+    \@tempdima=\paperwidth
+    \advance\@tempdima by -\textwidth
+    \divide\@tempdima by 2
+    \advance\@tempdima by -1in
+    \oddsidemargin=\@tempdima
+    \let\evensidemargin=\oddsidemargin
+
+%    \end{macrocode}
+
+% Create the title page as specified by the Grad College.
+%    \begin{macrocode}
+    \newdimen\thesis@dim
+    \thesis@dim=1.5in
+    \newdimen\ct@dim
+    \newdimen\cn@dim
+    \ct@dim=\oddsidemargin
+    \advance\ct@dim by -0.3125in
+    \cn@dim=\oddsidemargin
+    \advance\cn@dim by -0.6875in
+    \def\lc@selectfont{}%
+    \begin{center}
+    \vbox to 1in{}
+    \vbox to \thesis@dim{%
+        {\lc@selectfont\@Utitle}
+        \vfil}%
+    \vbox to 0.5in{%
+        {\lc@selectfont BY}\\[12pt]
+        \vfil}%
+    \vbox to 1.5in{%
+        {\lc@selectfont\@Uauthor}\\[12pt]
+        \vfil}%
+    \vbox to 2.0in{%
+        {\lc@selectfont \@thesisname}\\[12pt]
+        Submitted in partial fulfillment of the requirements\\
+        for the degree of \@degree\ in \@dept\\
+        \ifdefined\@concentration
+            with a concentration in \@concentration\\
+        \fi
+        \ifdefined\@minor
+            with a minor in \@minor\\
+        \fi
+        in the \@college\ of the\\
+        University of Illinois Urbana-Champaign, \@degreeyear\vfil}%
+    \vskip -1.5ex%
+    \vbox to 0.4in{%
+    Urbana, Illinois}%
+    \end{center}
+	\begin{flushleft}
+        \vbox to 0.3in{%
+        \hspace{-\ct@dim}\@committeename\\}
+        \hspace{-\cn@dim}\begin{tabular}{l}\@committee\end{tabular}\vfil
+	\end{flushleft}
+    \newpage
+    \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Front Matter}
+%
+% \begin{macro}{\frontmatter}
+% Redefine |\frontmatter| so that it sets the page number to 2.
+%    \begin{macrocode}
+\let\thesis@frontmatter=\frontmatter
+\def\frontmatter{%
+\thesis@frontmatter
+\setcounter{page}{2}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Table of Contents}
+%
+% \begin{macro}{\contentsname}
+% Title with ``Table of Contents'' instead of ``Contents''.
+%    \begin{macrocode}
+\RequirePackage[english]{babel}
+\addto{\captionsenglish}{\renewcommand*{\contentsname}{Table of contents}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\tableofcontents}
+% We want the Table of Contents to be single-spaced, so
+% we save the original definition, and then arrange it so
+% that the new |\tableofcontents| calls |\singlespacing| before calling
+% the original definition.
+%    \begin{macrocode}
+\let\thesis@tableofcontents=\tableofcontents
+\def\tableofcontents{{\singlespacing\thesis@tableofcontents}}
+%    \end{macrocode}
+% Set the table of contents entries to ``Chapter X'' and ``Appendix Y'' in the
+% appropriate places and include leader dots.
+%    \begin{macrocode}
+\RequirePackage{titletoc}
+\titlecontents{chapter}%
+  [0pt]%
+  {\vspace{1ex}}%
+  {\bfseries\chaptername~\thecontentslabel\quad}%
+  {\bfseries}%
+  {~\mdseries\titlerule*[0.5em]{.}\bfseries\contentspage}
+\g@addto@macro{\appendix}{%
+\titlecontents{chapter}%
+  [0pt]%
+  {\vspace{1ex}}%
+  {\bfseries\appendixname~\thecontentslabel\quad}%
+  {\bfseries}%
+  {~\mdseries\titlerule*[0.5em]{.}\bfseries\contentspage}
+}
+%    \end{macrocode}
+% Set the table of contents depth to 0, corresponding to the Graduate College's
+% preferred inclusion of chapters only.
+%    \begin{macrocode}
+\setcounter{tocdepth}{0}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listoftables}
+% \begin{macro}{\listoffigures}
+% Similarly, redefine |\listoftables| and |\listoffigures| so
+% that they use single spacing and add entries to the table of contents.
+%    \begin{macrocode}
+\let\thesis@listoftables=\listoftables
+\def\listoftables{\newpage%
+    \addcontentsline{toc}{chapter}{\listtablename}%
+    {\singlespacing\thesis@listoftables}}
+\let\thesis@listoffigures=\listoffigures
+\def\listoffigures{\newpage%
+    \addcontentsline{toc}{chapter}{\listfigurename}%
+    {\singlespacing\thesis@listoffigures}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsection{Other Frontmatter}
+%
+% \begin{environment}{abstract}
+% Define the abstract environment.
+%    \begin{macrocode}
+\newenvironment{abstract}{\chapter*{\abstractname}}{}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{dedication}
+% The dedication environment just starts a new page and prints the dedication
+% in the center in italics.
+%    \begin{macrocode}
+\newenvironment{dedication}{
+    \newpage
+    \leavevmode\vfill
+    \begin{center}
+    \itshape
+    }{
+    \end{center}
+    \vskip 3ex
+    \vfill
+    \newpage
+    }
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{acknowledgments}
+% Define the acknowledgments environment.
+%    \begin{macrocode}
+\newenvironment{acknowledgments}{\chapter*{Acknowledgments}}{}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{symbollist}
+% \begin{environment}{abbrevlist}
+% The \env{symbollist} environment can be used to create a list of symbols
+% with the left column centered (for symbols).
+% The \env{abbrevlist} environment has the left column left-justified
+% (for abbreviations).
+%    \begin{macrocode}
+\newenvironment*{symbollist}[1][1in]{
+    \begin{list}{}{\singlespacing
+     \setlength{\leftmargin}{#1}
+     \setlength{\labelwidth}{#1}
+     \addtolength{\labelwidth}{-\labelsep}
+     \setlength{\topsep}{0in}}%
+     \def\makelabel##1{\hfil##1\hfil}%
+    }{
+    \end{list}}
+\newenvironment*{abbrevlist}[1][1in]{
+    \begin{symbollist}[#1]
+    \def\makelabel##1{##1\hfil}}
+    {\end{symbollist}}
+%    \end{macrocode}
+% \end{environment}
+% \end{environment}
+%
+%
+% \subsection{Page Numbering}
+%
+% Page numbers must be in one of three places, and must appear in the
+% same place on \emph{every page}, including chapter openings.
+% \begin{macro}{\ps@plain}
+%    \begin{macrocode}
+\RequirePackage{geometry}
+\geometry{letterpaper}
+\geometry{margin=1in}
+\RequirePackage{fancyhdr}
+% https://tex.stackexchange.com/a/33877
+% Redefine plain style, which is used for titlepage and chapter beginnings
+% From https://tex.stackexchange.com/a/30230/828
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhf{}%
+    \fancyfoot[C]{\thepage}%
+}
+\pagestyle{plain}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Body Formatting}
+%
+% To set up the actual formatting for the front matter of the thesis,
+% simpliy specify roman page numbering.
+%    \begin{macrocode}
+\pagenumbering{roman}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%</class|package>
+%    \end{macrocode}
+%\Finale
