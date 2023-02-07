@@ -1,0 +1,79 @@
+\centering
+\textbf{HW Assignment \# 1 - MSE XYZ: Latex Styles} \dotfill \textbf{Fall 2024}
+
+\rule{\textwidth}{0.4pt}
+\begin{center}
+\begin{tabular}{c | c | c}
+     Handed Out: 8/26/24 5pm & Due: 9/2/24 5pm & Total: 25 points\\
+\end{tabular}
+\end{center}
+\rule{\textwidth}{0.4pt}
+\begin{questions}
+\question[5]
+This template is a basic demonstration of the \verb|exam| class in LaTeX, along with some useful tips and tricks.
+The \verb|main.tex| file has several different ways that it can be compiled depending on the desired output.
+One of the main advantages of this approach is that homework, homework solutions, exams, and exam solutions can all be contained in a single project directory, and the solutions are inline with the questions.
+In order to obtain the version of the document with the solutions, it simply needs to be compiled with the [answers] flag.
+To obtain different homework, or exam output, the relevant file simply needs to be uncommented in the main ``include'' section of \verb|main.tex|.
+This allows for the entirety of the homework/exams for a course to be available with relative ease.
+\begin{solution}[1in]
+If you're seeing this, the document has been compiled with the [answers] flag.
+\end{solution}
+
+\question[5]
+Questions are the main environment in the exam class.
+Questions can have parts:
+\begin{parts}
+    \part A part
+\end{parts}
+The value after the \verb|\question| declaration is the point value that the question is assigned.
+Solutions are created using the \verb|\begin{solution}[]| environment.
+The value in the [] is the amount of space to leave between questions when compiling the document without the solutions visible.
+\begin{solution}[1in]
+An example solution.
+Solutions can also contain parts:
+\begin{parts}
+    \part A part
+\end{parts}
+\end{solution}
+
+\question[5]
+Questions can also contain subparts, and you can assign point values to both parts and subparts:
+\begin{parts}
+    \part[2] A part
+    \begin{subparts}
+        \subpart[1] A subpart
+    \end{subparts}
+    \part[2] Another part
+\end{parts}
+\begin{solution}[1in]
+Solutions can also contain subparts:
+\begin{parts}
+    \part A part
+    \begin{subparts}
+        \subpart A subpart
+    \end{subparts}
+    \part Another part
+\end{parts}
+\end{solution}
+
+\question[5]
+Sometimes it may be desirable to have a multipart question with some text in between, like this:
+\begin{parts}
+    \part A part
+    \part Another part
+\end{parts}
+When you have text in between your parts and you start a new \verb|parts| environment, the counter will reset.
+You can get the correct numbering by setting the counter manually, for example \verb|\setcounter{partno}{2}|.
+Counters are 0-indexed in this environment.
+\begin{parts}
+\setcounter{partno}{2}
+    \part A part that has text between it and the previous part
+\end{parts}
+\begin{solution}[1in]
+Nothing really to put here?
+\end{solution}
+\question[5]
+Homework 2 contains several tips for working with graphics and math mode in the exam environment.
+Try compiling it!
+\end{questions}
