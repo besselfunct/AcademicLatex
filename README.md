@@ -18,4 +18,3 @@ In particular it shows how to set up the working directory on overleaf so that:
 
 TODO:
 - Add example references to `Article Template`
-- Add tutorial gifs to `Article Template` showing compilation and troubleshooting steps
