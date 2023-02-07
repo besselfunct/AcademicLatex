@@ -113,3 +113,84 @@ The build system can also have difficulties with updating things on overleaf, bu
 \verb|subcaption| allows for the creation of subfigures within a document.
 It's quite useful for prototyping figures and moving them around prior to committing to a final arrangement.
 Labels can be placed on subcaptions which can then be referenced in the text.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/DeltaG.png}
+        \caption{}
+        \label{fig:example1}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \begin{subfigure}{\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,keepaspectratio]{figures/equilibriumplot.png}
+            \caption{}
+            \label{fig:example2}
+        \end{subfigure}
+        \begin{subfigure}{\textwidth}
+            \centering
+            \includegraphics[width=\textwidth,keepaspectratio]{figures/DeltaH.png}
+            \caption{}
+            \label{fig:example3}
+        \end{subfigure}
+    \end{subfigure}
+    \caption{
+    (\subref{fig:example1}) basic demonstration of the subref command for a subfigure.
+    (\subref{fig:example2}) The other subfigure.
+    (\subref{fig:example3}) the last subfigure.
+    }
+    \label{fig:example-main}
+\end{figure}
+This is a somewhat more complicated example, but it shows that you can nest subfigures to obtain quite complicated layouts.
+The resulting figures can be referenced as usual, e.g. Figure \ref{fig:example2}.
+Using the ref command will give a full reference, and using the subref command will give only the subreference, e.g. Figure \ref{fig:example-main} part (\subref{fig:example2}).
+%
+    \subsection{PGFplots and CSVsimple}
+%
+The combination of \verb|pgfplots| and \verb|csvsimple| allows for the reading of data, and plotting all within the LaTeX environment.
+For example:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+        axis line style = thick, % Self-explanatory
+        every x tick/.style={color=black,thick},
+        every y tick/.style={color=black,thick},
+        no markers, % Get rid of the default scatter plot
+        xmin=400, % Set x bounds
+        xmax=700, % ""
+        xlabel={\textbf{Wavelength ($\lambda$) (nm)}}, % Provide X axis label
+        ylabel={\textbf{Absorbance (a.u.)}}, % Provide Y axis label
+        minor y tick num = {1}, % Number of ticks between major ticks
+        yticklabel style={/pgf/number format/fixed}, % Tell PGF Plots not to use exponential notation for y axis ticks
+        extra y ticks = {0}, % Add an extra y tick
+        extra y tick style = {grid=major}, % Add a horizontal line
+        every axis plot/.append style={ultra thick}, % Thicken the plotted lines 
+        tick label style={font=\normalsize},
+        label style={font=\normalsize}
+        ]
+            \addplot table [x = Wavelength (nm), y = Absorbance (AU), col sep=comma] {data/30ULALI.csv}; % Import the data. The x and y column labels have to be exactly the same as what they are in the raw data file
+            \addplot table [x = Wavelength (nm), y = Absorbance (AU), col sep=comma] {data/30UL.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{This is a test figure to demonstrate plotting a UV-Vis spectrum from raw data inside the LaTeX environment}
+    \label{fig:testfig}
+\end{figure}
+\noindent Much of the boilerplate can be eliminated by defining a custom style:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            UVVis,
+            xmin=400,
+            xmax=700,
+            ]
+            \addplot table [x = Wavelength (nm), y = Absorbance (AU), col sep=comma] {data/30ULALI.csv};
+            \addplot table [x = Wavelength (nm), y = Absorbance (AU), col sep=comma] {data/30UL.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{This is another test figure showing the use of a predefined style template to cut down on boilerplate code.}
+    \label{fig:template}
+\end{figure}
+In principle, this approach can also be used to auto-populate tables, but I haven't been able to get it to work within Overleaf.

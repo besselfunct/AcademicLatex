@@ -30,6 +30,8 @@
 \usepackage{xcolor} % Adds the ability to change text color. May interact poorly with printers
 \usepackage{url} % Makes typesetting urls easier
 \usepackage{lmodern} % Different font with more features
+\usepackage{csvsimple} % For obtaining data from .csv files
+\usepackage{pgfplots} % For plotting from .csv files
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Honorable Mentions
@@ -56,9 +58,29 @@
 \DeclareSIUnit[quantity-product = \,]
 \rpm{\text{rpm}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom plot style to cut down on boilerplate
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{
+    compat=1.18,
+    UVVis/.style={
+        axis line style=thick,
+        every axis plot/.append style=ultra thick,
+        no markers,
+        tick label style={font=\normalsize},
+        label style={font=\normalsize},
+        xlabel={\textbf{Wavelength (nm)}},
+        ylabel={\textbf{Absorbance (a.u.)}},
+        tick style={
+            color=black,
+            thick
+        },
+        yticklabel style={/pgf/number format/fixed},
+        minor y tick num = {1}
+    }
+}
 
 \begin{document}
-\input{codestyling.tex}
-\input{package_examples.tex}
-
+    \input{codestyling.tex}
+    \input{package_examples.tex}
 \end{document}

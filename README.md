@@ -17,7 +17,5 @@ In particular it shows how to set up the working directory on overleaf so that:
   1. The cover letter can be compiled as a separate file from the same directory
 
 TODO:
-- Add subfigures examples to `Useful Packages`
 - Add example references to `Article Template`
 - Add tutorial gifs to `Article Template` showing compilation and troubleshooting steps
-- Add an example of plotting from a `.csv` file
