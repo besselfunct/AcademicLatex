@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1in]{geometry} % Useful for setting margins
+% \usepackage[showframe]{geometry} % Uncomment to see the margin bounding boxes. Useful for proofing
+% Use \newgeometry{} and \restoregeometry to alter margins on the fly
+% Documentation: https://www.ctan.org/pkg/geometry
+\usepackage{siunitx} % Useful for typesetting units and scientific notation
+% Use with \SI{}; \num{}; \ang{}
+% Documentation: https://www.ctan.org/pkg/siunitx
+\usepackage{chemformula} % Useful for typesetting chemical formulae 
+% Use with \ch{}
+% Documentation: https://www.ctan.org/pkg/chemformula
+\usepackage{miller} % Useful for typesetting miller indices
+% Use with \hkl<>; \hkl[]; \hkl(); \hkl{}
+% Documentation: https://www.ctan.org/pkg/miller
+\usepackage[labelfont=bf]{caption} % For captioning figures
+\usepackage{subcaption} % For captioning subfigures
+\usepackage{lineno} % For adding line numbers
+\usepackage{hyperref} % Automatically adds clickable hyperlinks between sections and refs
+\usepackage{graphicx} % Allows embedding images
+\usepackage{float} % More precise figure placement
+\usepackage{newfloat} % Allows creation of new floating environments. Only import if necessary
+\usepackage{amsmath,amssymb} % Math environments and symbols
+\usepackage{listings} % Allows syntax-highlighted inline code
+\usepackage{tikz} % Commonly used package for 2D drawing
+\usepackage[inline]{asymptote} % Used for drawing 3D diagrams
+\usepackage{cancel} % Adds a quick macro for striking through math terms
+\usepackage{chemfig} % Adds a programmatic way to draw chemical structure images
+\usepackage{xcolor} % Adds the ability to change text color. May interact poorly with printers
+\usepackage{url} % Makes typesetting urls easier
+\usepackage{lmodern} % Different font with more features
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Honorable Mentions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These packages solve very specific problems and I don't typically import them
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{wrapfig}
+% Allows wrapped figures and tables. Use at your own risk
+
+% \usepackage[explicit,compact,small]{titlesec}
+% Manipulates titles and sections, to make them more compact. 
+% Useful on NSF proposals
+
+% \usepackage{beamer}
+% For making presentations using LaTeX
+
+% \usepackage{microtype}
+% Makes small tweaks to typesetting to make things more compact.
+% Useful on NSF Proposals
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declare Custom SI units
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareSIUnit[quantity-product = \,]
+\rpm{\text{rpm}}
+
+
+\begin{document}
+\input{codestyling.tex}
+\input{package_examples.tex}
+
+\end{document}

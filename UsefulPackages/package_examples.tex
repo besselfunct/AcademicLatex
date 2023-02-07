@@ -1,0 +1,115 @@
+\begin{center}
+    \LARGE \textsc{Useful Packages}
+\end{center}
+%
+\section{Scientific Typesetting}
+%
+    \subsection{SIUNITX}
+%
+\verb|siunitx| provides many useful commands for typesetting units and numbers both inside and outside math environments. 
+For example:
+\begin{itemize}
+    \item Input: \verb|\SI{2E-5}{\eV\per\nm\squared}|
+    \item Output: \SI{2E-5}{\eV\per\nm\squared}
+    \item Input: \verb|\num{10.0E-3}|
+    \item Output: \num{10.0E-3}
+    \item Input: \verb|\ang{30}|
+    \item Output: \ang{30}
+    \item Input: \verb|\SI{200}{\degreeCelsius}|
+    \item Output: \SI{200}{\degreeCelsius}
+\end{itemize}
+If a unit is not SI, but you would like to use it with the package you can define custom units by declaring them in the document preamble, as mentioned in the package documentation:\\
+\verb|\DeclareSIUnit[quantity-product = \,]|\\
+\verb|\rpm{\text{rpm}}|\\
+This can now be used like any other SI unit:
+\begin{itemize}
+    \item Input: \verb|\SI{2000}{\rpm}|
+    \item Output: \SI{2000}{\rpm}
+\end{itemize}
+%
+    \subsection{Chemformula}
+%
+\verb|chemformula| provides simple macros for typesetting chemical formulae:
+\begin{itemize}
+    \item Input: \verb|\ch{H2SO4}|
+    \item Output: \ch{H2SO4}
+\end{itemize}
+%
+    \subsection{Miller}
+%
+\verb|miller| provides excellent macros for typesetting crystal indices:
+\begin{itemize}
+    \item Input: \verb|\hkl<10-12>|
+    \item Output: \hkl<10-12>
+\end{itemize}
+All standard closures are supported ($<>$, \{\}, [], ())
+%
+    \subsection{Listings}
+%
+\verb|listings| provides support for blocks of syntax-highlighted code within LaTeX documents:
+\begin{lstlisting}[language=Python]
+a = 1
+b = 'two'
+for i in range:
+    print(i)
+\end{lstlisting}
+The syntax highlighting is defined in the \verb|codestyling.tex| file, and can be modified as desired.
+The \verb|codestyling.tex| file must be \verb|input| into the document before it can be used.
+%
+\section{Graphics and Drawing}
+%
+    \subsection{Chemfig}
+%
+\verb|chemfig| provides rich support for creating nicely programmatically drawn chemical structures in LaTeX documents.
+The necessary syntax is somewhat confusing, but looking at the documentation is quite helpful.
+\begin{itemize}
+    \item Input: \verb|\chemfig{*6(-=-=(-([::60]=O)-[::-60]OH)-=)}|
+    \item Output: \chemfig{*6(-=-=(-([::60]=O)-[::-60]OH)-=)}
+\end{itemize}
+%
+    \subsection{TikZ}
+%
+\verb|tikz| is the most commonly used 2D graphics package in the LaTeX world, and can do most things that you would want.
+It's quite useful for drawing diagrams, and small figures, but it can even be used to plot data from a \verb|csv| file with the correct setup.\\
+\begin{tikzpicture}
+\draw[gray, thick] (-4,0) -- (-2,0);
+\draw[gray, thick] (-3,1) -- (-3,0);
+\draw[gray, thick] (4,-1) -- (2,-1);
+\draw[gray, thick] (3,-1) -- (3,-2);
+\draw[gray, ultra thick, ->] (-2.5,0.5) -- (0,0.5);
+\draw[gray, ultra thick, ->] (2.5,-1.5) -- (0,-1.5);
+\end{tikzpicture}
+%
+    \subsection{Asymptote}
+%
+\verb|asymptote| provides both 2D and 3D graphics primitives.
+It has its own graphics language, so it can be somewhat challenging to get what you want out of it.
+The build system can also have difficulties with updating things on overleaf, but when you get it working, it's quite capable.\\
+\begin{asy}
+    size(5cm,0);
+    import three;
+    import palette;
+    currentprojection=orthographic(3,1,1);
+    draw((1,0,0)--(1,1,0)--(0,1,0)--(0,1,1)--(1,1,1)--(1,0,1)--(0,0,1)--(0,1,1));
+    draw((1,1,0)--(1,1,1));
+    draw((1,0,0)--(1,0,1));
+    draw((0,0,0)--(1,0,0),dashed);
+    draw((0,0,0)--(0,0,1),dashed);
+    draw((0,0,0)--(0,1,0),dashed);
+    draw((0,0,0)--(0,0,-1),dashed);
+    draw((0,1,0)--(0,1,-1),dashed);
+    draw(surface((1,0,0)--(0,0,-1)--(0,1,-1)--(1,1,0)--cycle),blue+opacity(0.2),nolight);
+    draw((1,0,0)--(1.5,0,0),Arrow3);
+    label("$+x$",(1.5,0,0),S);
+    draw((0,1,0)--(0,1.5,0),Arrow3);
+    label("$+y$",(0,1.5,0),S);
+    draw((0,0,1)--(0,0,1.5),Arrow3);
+    label("$+z$",(0,0,1.5),N);
+    label("$(10\bar{1})$",(1,0.5,-0.5),NE);
+\end{asy}
+%
+    \subsection{Subcaption}
+%
+\verb|subcaption| allows for the creation of subfigures within a document.
+It's quite useful for prototyping figures and moving them around prior to committing to a final arrangement.
+Labels can be placed on subcaptions which can then be referenced in the text.
