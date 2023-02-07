@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{miller,siunitx,subcaption,float,newfloat,amsmath,amssymb,chemformula,graphicx}
+\usepackage[labelfont=bf]{caption}
+\usepackage{xr} % necessary for external references
+\usepackage{lineno}
+\linenumbers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This section is part of where the magic happens
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+
+\myexternaldocument{main_supporting}
+
+\begin{document}
+    \input{0_abstract.tex}
+    \input{1_introduction.tex}
+    \input{2_results.tex}
+    \input{3_methods.tex}
+    \input{4_conclusions.tex}
+\end{document}

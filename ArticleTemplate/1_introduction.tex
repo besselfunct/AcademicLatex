@@ -1,0 +1,28 @@
+\section{Introduction}
+This project contains 4 compilable documents, several of which are interconnected.
+This is made possible by the package \verb|xr| and the addition of the \verb|latexmkrc| file.
+
+The basic idea is that we can tell LaTeX that we want to compile a given file \textit{before} another file, and then use the results of the compilation in our new file.
+We have 3 main connected files, the supporting information, the main article, and the response to reviewers.
+In general, we want the compilation order to be:
+\begin{center}
+    Supporting Info $\to$ Main Article $\to$ Response to Reviewers
+\end{center}
+This ensures that any references to the supporting information in the main text are compiled before the main text, and any references to the main text from the reviewer response are compiled first.
+
+The first thing to note is that the compilation target can be set by the user within the Overleaf main menu:
+\begin{center}
+    \includegraphics[width=0.3\textwidth,keepaspectratio]{tutorial/OverleafMenu.png} $\to$
+    \includegraphics[width=0.3\textwidth,keepaspectratio]{tutorial/MainDoc.png}
+\end{center}
+This allows you to work on any of these individual documents separately, however be aware that the compile time may increase significantly when working on a document with many dependencies (such as the response to reviewers).
+\subsection{Troubleshooting}
+Sometimes, Overleaf seems to display the pdf that matches the name of the file that is currently selected, so changes in compilation may not be reflected if the wrong .tex file is selected.
+Try selecting the .tex file of the pdf you want to view, and it may sort itself out.
+
+If the above does not work, sometimes it is necessary to view or clear the cached files.
+All of the compiled files can be viewed in the ``Other logs and files'' dialog, and the compiled files can be cleared using the ``Clear cached files'' dialog:
+\begin{center}
+    \includegraphics[width=0.3\textwidth,keepaspectratio]{tutorial/CachedFiles.png}
+\end{center}
+Both of these dialogs are at the very bottom of the ``logs'' pane which is immediately adjacent to the ``Compile''/``Recompile'' button.

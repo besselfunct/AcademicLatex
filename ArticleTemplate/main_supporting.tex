@@ -1,0 +1,20 @@
+% This preamble should declare similar packages to main.tex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{miller,siunitx,subcaption,float,newfloat,amsmath,amssymb,chemformula,graphicx}
+\usepackage[labelfont=bf]{caption}
+
+% This makes a separate supporting figure environment
+\DeclareFloatingEnvironment[
+    fileext=sup,
+    listname={Supporting Figures},
+    name=Figure,
+    placement=tbhp,
+    within=none,
+]{sfig}
+\DeclareCaptionLabelFormat{sfigs}{\textbf{#1} S#2}
+\captionsetup[sfig]{labelformat=sfigs,labelsep=colon}
+
+\begin{document}
+    \input{5_supporting.tex}
+\end{document}

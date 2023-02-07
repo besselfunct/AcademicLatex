@@ -1,0 +1,9 @@
+\reviewersection
+\begin{point}
+This section demonstrates referencing labels from the main document.
+\end{point}
+
+\begin{reply}
+    We have a label on page \pageref{point:1} line \lineref{line:1} which we can reference using pageref and lineref respectively.
+    Unfortunately, the \verb|xr| package does not play nicely with the \verb|hyperref| package, so if you want hyperlinks, you will have to compile separately with the package enabled/disabled.
+\end{reply}
