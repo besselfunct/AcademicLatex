@@ -20,3 +20,4 @@ TODO:
 - Add subfigures examples to `Useful Packages`
 - Add example references to `Article Template`
 - Add tutorial gifs to `Article Template` showing compilation and troubleshooting steps
+- Add an example of plotting from a `.csv` file
