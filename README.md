@@ -16,5 +16,6 @@ In particular it shows how to set up the working directory on overleaf so that:
   1. The response to reviewers is compiled as a separate file, but can reference figures, page numbers, and line numbers from the main text
   1. The cover letter can be compiled as a separate file from the same directory
 - This [tool](https://flamingtempura.github.io/bibtex-tidy/index.html) is extremely useful for linting bibliographies, and catching duplicates. 
+
 TODO:
 - Add example references to `Article Template`
