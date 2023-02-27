@@ -15,3 +15,6 @@ This is done through the Overleaf main menu, as shown below:
 It may also be necessary to clear the cache, or view specific compiled objects, which is shown here:
 
 ![clearcache](./tutorial/ClearCache.gif)
+
+## If using the `achemso` package
+It is convenient to define the author info in an `author_info.tex` file, and `\input{}` the file in the preamble of both the Supporting Information and the main document.
